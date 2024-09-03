@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscriber Management</title>
+    <link rel="stylesheet" href="/css/style-output.css">
+</head>
+<body>
+    <div id="blur-overlay"></div>
+    <span id="loader"></span>
+    <div class="container m-auto">
+        <h1 class="text-center">IMS Home Phone Subscriber Service</h1>
+        <div class="flex flex-col">
+            <div class="flex flex-col max-w-[350px] m-auto">
+                <div class="message" id="message"></div>
+
+                <!-- Form for Adding/Updating Subscribers -->
+                <form id="subscriberForm" class="flex flex-col gap-2">
+                    <h2>Add/Update Subscriber</h2>
+                    <div class="input-group">
+                        <input type="text" id="phoneNumber" placeholder="" name="phone" required>
+                        <label for="phone">Phone Number</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="" name="username" required>
+                        <label for="username">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="password" placeholder="" name="password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="text" id="domain" placeholder="" name="domain" required>
+                        <label for="domain">Domain</label>
+                    </div>
+                    <select id="status">
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="INACTIVE">INACTIVE</option>
+                    </select>
+                    <label class="flex items-center gap-2">
+                        <input type="checkbox" id="callForwardNoReply_provisioned" class="w-[13px]">
+                         Call Forward No Reply Provisioned
+                    </label>
+                    <div class="input-group">
+                        <input type="text" id="callForwardNoReply_destination" placeholder="" name="noreply" disabled>
+                        <label for="noreply">Call Forward No Reply Destination</label>
+                    </div>
+                    <button type="submit">Add/Update Subscriber</button>
+                </form>
+        
+                <!-- Form for Retrieving/Deleting Subscribers -->
+                <form id="retrieveDeleteForm" class="flex flex-col gap-2">
+                    <h2>Retrieve/Delete Subscriber</h2>
+                    <div class="input-group">
+                        <input type="number" id="retrievePhoneNumber" placeholder="" name="phone2" required>
+                        <label for="phone2">Phone Number</label>
+                    </div>
+                    <button type="button" onclick="retrieveSubscriber()">Retrieve Subscriber</button>
+                    <button type="button" onclick="deleteSubscriber()" class="btn-red">Delete Subscriber</button>
+                    <button type="button" onclick="fetchAllSubscribers()" class="btn-blue">Fetch All Subscribers</button>
+                </form>
+        
+                <!-- Button to Fetch All Subscribers -->
+            </div>
+            <div class="mt-10">
+                <!-- Table to Display Subscribers -->
+                <table id="subscribersTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Phone Number</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Domain</th>
+                            <th>Status</th>
+                            <th>Call Forward No Reply Provisioned</th>
+                            <th>Call Forward No Reply Destination</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subscribersTableBody">
+                        <!-- dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
